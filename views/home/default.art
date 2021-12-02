@@ -47,16 +47,16 @@
         <!-- Pagination -->
         <ul class="pagination">
             <li style="display: {{ posts.page-1 < 1 ? 'none' : 'inline'}}">
-                <a href={{category ? '/home/category/' + id + 'page=' + posts.page-1 : '/home?page=' + posts.page-1}}>
+                <a href={{category ? '/home/category/' + id + '?page=' + posts.page-1 : '/home?page=' + posts.page-1}}>
                     <span>&laquo;</span>
                 </a>
             </li>
             {{each posts.display}}
-            <li><a href={{category ? '/home/category/' + id + 'page=' + $value : '/home?page=' +  $value}} class="{{$value==posts.page ? 'active': ''}}">{{$value}}</a></li>
+            <li><a href={{category ? '/home/category/' + id + '?page=' + $value : '/home?page=' +  $value}} class="{{$value==posts.page ? 'active': ''}}">{{$value}}</a></li>
             {{/each}}
 
             <li style="display: {{ posts.page - 0 + 1 > posts.pages ? 'none' : 'inline'}}">
-                <a href={{category ? '/home/category/' + id + 'page=' + posts.page-0+1 : '/home?page=' + posts.page-0+1}}>
+                <a href={{category ? '/home/category/' + id + '?page=' + posts.page-0+1 : '/home?page=' + posts.page-0+1}}>
                     <span>&raquo;</span>
                 </a>
             </li>
