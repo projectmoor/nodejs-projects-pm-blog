@@ -1,6 +1,9 @@
 // grab Post collection build function and validation function
 const { Post, validatePost } = require('../../model/post');
 
+// support absolute file directory
+const path = require('path');
+
 // grab formidable module to support file upload
 const formidable = require('formidable');
 
