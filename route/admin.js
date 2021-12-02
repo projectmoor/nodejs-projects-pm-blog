@@ -3,6 +3,10 @@ const express = require('express');
 const admin = express.Router();
 
 // all admin related route files live in ./admin folder
+
+admin.get('/', function(req, res) {
+    res.redirect('/admin/user');
+})
 // render login page
 admin.get('/login', require('./admin/loginPgae'));
 
