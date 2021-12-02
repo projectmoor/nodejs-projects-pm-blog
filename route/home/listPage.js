@@ -19,5 +19,5 @@ module.exports = async(req, res) => {
     }
     const category = categories[id]
 
-    res.render('home/default', { posts, category });
+    res.render('home/default', { posts, category, id });
 }
