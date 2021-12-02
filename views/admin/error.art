@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin/css/base.css">
+    <link rel="stylesheet" href="/admin/css/login.css">
+    <title>Project Moor - Manager Login</title>
+</head>
+
+<body>
+    <!-- login page - entire page area -->
+    <div class="login-body">
+        <div class="login-wrapper">
+            <p class="error-msg">{{msg}}</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // jump to login page after 3 seconds
+        setTimeout(function() {
+            location.href = '/admin/login'; 
+        }, 3000);
+    </script>
+</body>
+
+</html>

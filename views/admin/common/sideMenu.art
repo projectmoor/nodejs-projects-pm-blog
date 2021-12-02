@@ -1,0 +1,19 @@
+<!-- side Menu (page LEFT below TOP header)-->
+<div class="aside fl">
+    <ul class="menu">
+        <li class="menu-item">
+            <a href="/admin/user" class="{{currentLink == 'user' ? 'active' : ''}}">
+                <i class="icon-users"></i>Users
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="/admin/post" class="{{currentLink == 'post' ? 'active' : ''}}">
+                <i class="icon-posts"></i>Posts
+            </a>
+        </li>
+    </ul>
+    <div class="copyright">
+        Powered by <a href="#">Path Maker</a>
+    </div>
+</div>
+<!-- /side Menu -->

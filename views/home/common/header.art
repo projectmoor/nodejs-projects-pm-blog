@@ -1,0 +1,28 @@
+<!-- header -->
+<div class="header clearfix">
+    <div class="w1800">
+        <!-- header left -->
+        <ul class="navigation fl">
+            <li>
+                <a href="/home/">Project Moor</a>
+            </li>
+        </ul>
+        <!-- header left end-->
+        <!-- logo -->
+        <div class="logo" id="logo">
+            <!-- <img class="logo-top" src="images/btn-menu.png" alt=""> -->
+            <img class="logo-bottom" src="/home/images/logo-w.png" alt="">
+        </div>
+        <!-- header left menu -->
+        <ul class="navigation fr">
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="{{userInfo?'/admin/logout': '/admin/login'}}">{{userInfo?'Log Out': 'Log In'}}</a>
+            </li>
+        </ul>
+        <!-- header left menu end -->
+    </div>
+</div>
+<!-- /header -->

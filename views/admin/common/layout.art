@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Moor - Content Manager</title>
+    <link rel="stylesheet" href="/admin/css/base.css">
+    <link rel="stylesheet" href="/admin/css/common.css">
+</head>
+
+<body>
+    <!-- header (page TOP) -->
+    {{include './header.art'}}
+    <!-- /header -->
+    <!-- main content area (all area below TOP header)-->
+    <div class="content">
+        <!-- side Menu (page LEFT below TOP header)-->
+        {{include './sideMenu.art'}}
+        <!-- /side Menu -->
+        <!-- main Body Section -->
+        {{block 'main'}}{{/block}}
+        <!-- /main Body Section -->
+
+    </div>
+    <!-- /main content area -->
+
+    <!-- JS - toggle profile button -->
+    <script type="text/javaScript">
+        var profileBtn = document.querySelector('.profile-btn'); var dropdown = document.querySelector('.profile-dropdown-menu'); profileBtn.addEventListener('click', ()=> { dropdown.classList.toggle('hidden'); });
+    </script>
+    {{block 'script'}}{{/block}}
+</body>
+
+</html>

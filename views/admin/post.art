@@ -1,0 +1,82 @@
+{{extend './common/layout.art'}} {{block 'main'}}
+<!-- main Body Section -->
+<div class="main">
+
+    <!-- Title Area (user title, # of users, add user btn)-->
+    <div class="title">
+        <h4>Posts</h4>
+        <span>Found {{posts.total}} post</span>
+        <!-- add user btn -->
+        <a href="/admin/post-edit" class="btn-add">New Post</a>
+    </div>
+    <!-- /Title Area -->
+    <!-- Post List -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Publish Date</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{each posts.records}}
+            <tr>
+                <td>{{@ $value._id}}</td>
+                <td>{{$value.category}}</td>
+                <td>{{$value.title}}</td>
+                <td>{{dateFormat($value.publishDate, 'mm/dd/yyyy')}}</td>
+                <td>{{$value.author.username}}</td>
+                <td>
+                    <a href="/admin/post-edit?id={{@ $value._id}}" class="icon-edit" title="Edit"></a>
+                    <i class="icon-remove  modal-fn-open" title="Delete" data-id="{{@ $value._id}}"></i>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <!-- /Post List -->
+    <!-- Pagination -->
+    <ul class="pagination">
+        <li style="display: {{ posts.page-1 < 1 ? 'none' : 'inline'}}">
+            <a href="/admin/post?page={{posts.page-1}}">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        {{each posts.display}}
+        <li><a href="/admin/post?page={{$value}}" class="{{$value==posts.page ? 'active': ''}}">{{$value}}</a></li>
+        {{/each}}
+
+        <li style="display: {{ posts.page - 0 + 1 > posts.pages ? 'none' : 'inline'}}">
+            <a href="/admin/post?page={{posts.page-0+1}}">
+                <span>&raquo;</span>
+            </a>
+        </li>
+    </ul>
+    <!-- /Pagination -->
+    <!-- Delete Confirm Dialog -->
+    <div class="modal">
+        <form action="/admin/delete-post" method="GET" class="modal-content" id="deleteForm">
+            <div class="modal-header">
+                <button type="button" class="modal-close modal-fn-close"><span>&times;</span></button>
+                <h4 class="modal-title">Please Confirm</h4>
+            </div>
+            <div class="modal-body">
+                <p>Delete this post?</p>
+                <input type="hidden" name="id" id="deleteId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn modal-btn-light modal-fn-close">Cancel</button>
+                <input type="submit" class="modal-btn" value="Delete">
+            </div>
+        </form>
+    </div>
+    <!-- /Delete Confirm Dialog -->
+</div>
+<!-- /main Body Section -->
+{{/block}} {{block 'script'}}
+<script src="/admin/js/modal.js "></script>
+{{/block}}

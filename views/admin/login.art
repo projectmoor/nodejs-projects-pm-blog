@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin/css/base.css">
+    <link rel="stylesheet" href="/admin/css/login.css">
+    <title>Project Moor - Manager Login</title>
+</head>
+
+<body>
+    <!-- login page - entire page area -->
+    <div class="login-body">
+        <div class="login-wrapper">
+            <!-- display logo -->
+            <div class="logo-container">
+                <img class="logo" src="../home/images/logo-b.png" alt="">
+            </div>
+            <!-- /display logo -->
+            <!-- login page - content area -->
+            <div class="login-container">
+                <!-- welcome words -->
+                <h4 class="title">Hello, log in here!</h4>
+                <!-- login form container (defined size/box shadow) -->
+                <div class="login">
+                    <!-- login form (to post req) -->
+                    <form action="/admin/login" method="post" id="loginForm">
+                        <div class="form-group">
+                            <label for="inputEmail">Username / Email address</label>
+                            <input type="email" name="email" placeholder="email@domin.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" placeholder="password">
+                            <div>
+                                <a href="#">Forgot password?</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-login">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="/admin/js/common.js"></script>
+    <script type="text/javascript">
+        var loginForm = document.querySelector('#loginForm');
+        loginForm.addEventListener('submit', (e) => {
+            // prevents default form submittion action.
+            // e.preventDefault();
+
+            var result = serializeToJson(loginForm); // get all form inputs 
+
+            // user didn't enter email
+            if (result.email.trim().length == 0) {
+                alert("You didn't enter email address");
+                // prevent program from running down and default form submit befavior
+                // return false doesn't work, must use e.preventDefault()
+                // return false;
+                e.preventDefault();
+            }
+            // user didn't enter password
+            if (result.password.trim().length == 0) {
+                alert("You didn't enter password");
+                // prevent program from running down and default form submit befavior
+                // return false doesn't work, must use e.preventDefault()
+                // return false;
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

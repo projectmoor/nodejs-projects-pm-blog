@@ -1,0 +1,81 @@
+{{extend './common/layout'}} {{block 'main'}}
+<!-- main Body Section -->
+<div class="main">
+    <!-- Title Area (user title, # of users, add user btn)-->
+    <div class="title">
+        <h4>Users</h4>
+        <span>Found {{users.length}} user</span>
+        <!-- add user btn -->
+        <a href="/admin/user-edit" class="btn-add">Add User</a>
+    </div>
+    <!-- /Title Area -->
+    <!-- User List -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>State</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{each users}}
+            <tr>
+                <td>{{@ $value._id}}</td>
+                <td>{{$value.username}}</td>
+                <td>{{$value.email}}</td>
+                <td>{{$value.role}}</td>
+                <td>{{$value.state == 1? 'Active' : $value.state == 0 ? 'Inactive' : ''}}</td>
+                <td>
+                    <a href="/admin/user-edit?id={{@ $value._id}}" class="icon-edit" title="Edit"></a>
+                    <i class="icon-remove modal-fn-open" title="Delete" data-id={{@ $value._id}}></i>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <!-- /User List -->
+    <!-- Pagination -->
+    <ul class="pagination">
+        <li style="display: {{ page-1 < 1 ? 'none' : 'inline'}}">
+            <a href="/admin/user?page={{page-1}}">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <% for(var i = page; i <= total; i++) { %>
+            <li><a href="/admin/user?page={{i}}" class="{{i==page ? 'active': ''}}">{{i}}</a></li>
+        <% } %>
+        <li style="display: {{ page - 0 + 1 > total ? 'none' : 'inline'}}">
+            <a href="/admin/user?page={{page-0+1}}">
+                <span>&raquo;</span>
+            </a>
+        </li>
+    </ul>
+    <!-- /Pagination -->
+
+    <!-- Delete Confirm Dialog -->
+    <div class="modal">
+        <form action="/admin/delete-user" method="GET" class="modal-content" id="deleteForm">
+            <div class="modal-header">
+                <button type="button" class="modal-close modal-fn-close"><span>&times;</span></button>
+                <h4 class="modal-title">Please Confirm</h4>
+            </div>
+            <div class="modal-body">
+                <p>Delete this user?</p>
+                <input type="hidden" name="id" id="deleteId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn modal-btn-light modal-fn-close">Cancel</button>
+                <input type="submit" class="modal-btn" value="Delete">
+            </div>
+        </form>
+    </div>
+    <!-- /Delete Confirm Dialog -->
+</div>
+<!-- /main Body Section -->
+{{/block}} {{block 'script'}}
+<script src=" /admin/js/modal.js "></script>
+{{/block}}

@@ -1,0 +1,185 @@
+/* Hero Image */
+
+.hero {
+    width: 100%;
+    height: 66vh;
+    background: url('../images/oceanboat_02.jpg') no-repeat;
+    background-size: cover;
+    margin: -60px auto 0;
+}
+
+
+/* --Hero Image */
+
+
+/* The Intro Section */
+
+.intro {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.intro h3 {
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: 400;
+}
+
+.intro p {
+    font-size: 54px;
+    margin: 40px 0;
+}
+
+.intro a {
+    display: block;
+    width: 180px;
+    padding: 15px 30px;
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.intro a:hover {
+    background-color: #858585;
+}
+
+
+/* --The Intro Section */
+
+
+/* Recent Notes List Section */
+
+.notes {
+    max-width: 1200px;
+    min-width: 800px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.notes-hd {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    border-bottom: 2px solid #DEDEE1;
+}
+
+.notes-hd .notes-hd-item {
+    float: left;
+}
+
+.notes-hd-item {
+    padding: 5px 0;
+    margin-right: 16px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.notes-hd-item:hover {
+    color: #858585;
+    border-bottom: 2px solid skyblue;
+}
+
+.notes-hd-item.active {
+    border-bottom: 2px solid skyblue;
+}
+
+
+/* Post List Each Post Preview Card */
+.notes-bd {
+    text-align: center;
+}
+.note-card {
+    width: 100%;
+    height: 210px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin: 30px 0;
+}
+
+.note-card-coverbox {
+    float: left;
+    height: 210px;
+    width: 30%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: skyblue;
+}
+
+.note-card-coverbox img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.note-card-textbox {
+    float: left;
+    height: 210px;
+    width: 70%;
+    padding: 35px 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.note-card-textbox .note-card-tag {
+    font-weight: 700;
+    color: #90989E;
+}
+
+.note-card-textbox .note-card-title {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.note-card-textbox .note-card-info {
+    color: #90989E;
+    margin-bottom: 10px;
+}
+
+.text-bold {
+    font-weight: 700;
+    color: #000;
+}
+
+
+/* Category Modal */
+
+.category {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-color: #333;
+    z-index: 999;
+}
+
+.category-title {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    margin: 100px auto 50px auto;
+}
+
+.category-item {
+    float: left;
+    width: 50%;
+    height: 70px;
+    text-align: center;
+}
+
+.category-item a {
+    color: #fff;
+    font-size: 24px;
+}
+
+.category-item a:hover {
+    color: skyblue
+}

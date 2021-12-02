@@ -1,0 +1,70 @@
+{{extend './common/layout.art'}} {{block 'main'}}
+<!-- main Body Section -->
+<div class="main">
+    <!-- Title Area (user title, # of users, add user btn)-->
+    <div class="title">
+        <h4 style="display: {{user ? 'block' : 'none'}}">{{@ user && user._id}}</h4>
+        <p style="display: {{msg ? 'block': 'none'}}">{{msg}}</p>
+    </div>
+    <!-- /Title Area -->
+    <!-- Add User Form -->
+    <form class="edit-form-container" action="{{link}}" method="POST" id="form">
+        <div class="edit-form-group">
+            <label>Username</label>
+            <input class="edit-form-input" type="text" placeholder="username" name="username" value="{{user&&user.username}}">
+        </div>
+        <div class="edit-form-group">
+            <label>Email</label>
+            <input class="edit-form-input" type="email" placeholder="email@domin.com" name="email" value="{{user&&user.email}}">
+        </div>
+        <div class="edit-form-group">
+            <label>Password</label>
+            <input class="edit-form-input" type="password" placeholder="password" name="password">
+        </div>
+        <div class="edit-form-group">
+            <label>Role</label>
+            <select class="edit-form-input" name="role">
+                        <option value="Member" {{user&&user.role == 'Member'? 'selected' : ''}}>Member</option>
+                        <option value="Admin" {{user&&user.role == 'Admin'? 'selected' : ''}}>Admin</option>
+                    </select>
+        </div>
+        <div class="edit-form-group">
+            <label>State</label>
+            <select class="edit-form-input" name="state">
+                        <option value="1" {{user&&user.state == 1 ? 'selected' : ''}}>Active</option>
+                        <option value="0" {{user&&user.state == 0 ? 'selected' : ''}}>Inactive</option>
+                    </select>
+        </div>
+        <input type="submit" class="btn-submit" value="{{button}}">
+    </form>
+    <!-- /Add User Form -->
+</div>
+{{/block}} {{block 'script'}}
+<script src=" /admin/js/common.js "></script>
+<script type="text/javascript ">
+    var form = document.querySelector('#form');
+    form.addEventListener('submit', (e) => {
+        // prevents default form submittion action.
+        // e.preventDefault();
+
+        var result = serializeToJson(form);
+
+        // user didn't enter username
+        if (result.username.trim().length == 0) {
+            alert("You didn 't enter username");
+            // prevent program from running down
+            // return false doesn't work, must use e.preventDefault()
+            e.preventDefault();
+            // return false;
+        }
+        // user didn't enter email if (result.email.trim().length==0 ) { alert( "You didn't enter email address"); // prevent program from running down return false; } // user didn 't enter password
+        if (result.password.trim().length == 0) {
+            alert("You didn't enter password ");
+            // prevent program from running down
+            // return false doesn't work, must use e.preventDefault()
+            e.preventDefault();
+            // return false;
+        }
+    });
+</script>
+{{/block}}

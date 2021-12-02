@@ -1,0 +1,25 @@
+<!-- header (page TOP) -->
+<div class="header">
+    <!-- Content Manager - Title -->
+    <div class="logo fl">Project
+        <i>Moor</i>
+    </div>
+    <!-- /Content Manager - Title -->
+    <!-- Content Manager - User Info -->
+    <div class="info">
+        <!-- Username w/ dropdown functionality-->
+        <div class="profile fr">
+            <!-- Username&down triangle to click -->
+            <span class="profile-btn">
+                    {{userInfo && userInfo.username}}
+                </span>
+            <!-- dropdown list to show -->
+            <ul class="profile-dropdown-menu hidden">
+                <li><a href="#">Account</a></li>
+                <li><a href="/admin/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /Content Manager - User Info -->
+</div>
+<!-- /header -->

@@ -1,0 +1,8 @@
+{
+    "db": {
+        "user": "admin",
+        "host": "cluster0.fofmj.mongodb.net",
+        "port": "",
+        "name": "pm-blog"
+    }
+}

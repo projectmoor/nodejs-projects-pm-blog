@@ -1,0 +1,86 @@
+{{extend './common/layout.art'}} {{block 'main'}}
+<!-- main Body Section -->
+<div class="main">
+    <!-- Title Area (user title, # of users, add user btn)-->
+    <div class="title">
+        <h4 style="display: {{post ? 'block' : 'none'}}">{{@post&&post._id}}</h4>
+        <p style="display: {{msg ? 'block' : 'none'}}">{{msg}}</p>
+    </div>
+    <!-- /Title Area -->
+    <!-- Add Post Form -->
+    <!-- enctype is default to 'application/x-www-form-urlencoded' with data in 'name=key&name2=key2' form -->
+    <!--encytpe must set to 'multipart/form-data' to make data in binary form for file upload -->
+    <form class="edit-form-container" method="POST" action="{{link}}" enctype="multipart/form-data">
+        <div class="edit-form-group">
+            <label>Category</label>
+            <select class="edit-form-input" name="category">
+                        <option value="web-design" {{post&&post.category == 'Web Design'? 'selected' : ''}}>Web Design</option>
+                        <option value="javascript" {{post&&post.category == 'Javascript'? 'selected' : ''}}>Javascript</option>
+                        <option value="nodejs" {{post&&post.category == 'Node.js'? 'selected' : ''}}>Node.js</option>
+                    </select>
+        </div>
+        <div class="edit-form-group">
+            <label>Title</label>
+            <input class="edit-form-input" type="text" placeholder="title" name="title" value="{{post&&post.title}}">
+        </div>
+        <div class="edit-form-group">
+            <label>Author</label>
+            <input class="edit-form-input" type="text" readonly name="author" value="{{@post?post.author._id: userInfo._id}}">
+        </div>
+        <div class="edit-form-group">
+            <label>Publish Date</label>
+            <input class="edit-form-input" type="date" name="publishDate" value="{{post? dateFormat(post.publishDate, 'yyyy-mm-dd'): dateFormat(todayDate, 'yyyy-mm-dd')}}">
+        </div>
+        <div class="edit-form-group">
+            <label>Article Cover</label>
+            <input type="file" name="cover" id="uploadFile">
+            <div class="thumbnail-wraper">
+                <img class="img-thumbnail" src="{{post&&post.cover}}" id="previewImg">
+            </div>
+        </div>
+        <div class="edit-form-group">
+            <label>Content</label>
+            <textarea name="content" id="editor">
+                        {{post&&post.content}}
+                    </textarea>
+        </div>
+        <input type="submit" class="btn-submit" value="{{button}}">
+    </form>
+    <!-- /Add User Form -->
+</div>
+</div>
+{{/block}} {{block 'script'}}
+<script src="/admin/lib/ckeditor5-build-classic/ckeditor.js "></script>
+<script src=" /admin/js/common.js "></script>
+<script type="text/javascript ">
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    // client-side validation
+    var form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        var result = serializeToJson(form);
+        // user didn't enter title
+        if (result.title.trim().length < 2) {
+            alert("Please enter at least 2 characters for title. ");
+            // prevent program from running down
+            // return false doesn't work, must use e.preventDefault()
+            e.preventDefault();
+            // return false;
+        }
+    });
+
+    // upload image preview 
+    document.querySelector('#uploadFile').addEventListener('change', (e) => {
+        var previewImg = document.querySelector('#previewImg');
+        var reader = new FileReader(); // FileReader is an native JS method
+        reader.readAsDataURL(e.target.files[0]); // read binary file such as picture, it's a async method
+        reader.onload = function() {
+            previewImg.setAttribute('src', reader.result);
+        }
+    })
+</script>
+{{/block}}

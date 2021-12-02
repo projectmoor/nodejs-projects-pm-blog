@@ -1,0 +1,131 @@
+/* article */
+
+.article {
+    margin-top: 60px;
+}
+
+.article .w1200 {
+    overflow: hidden;
+}
+
+.article .container {
+    padding: 30px 40px 20px;
+    background: #FFF;
+}
+
+/* --article */
+
+
+
+/* article content */
+
+.article-header {
+    margin-bottom: 20px;
+}
+
+.article-header img {
+    display: block;
+    max-height: 200px;
+    margin: 0 auto 20px auto;
+}
+
+.article-header .article-title {
+    transition: all 0.2s;
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.article-header .article-title:hover {
+    color: #ff7300;
+}
+
+.article-author{
+    font-weight: 700;
+    color: #1A8917
+}
+
+.article-date {
+    color: #757575;
+}
+
+.article-content {
+    margin-bottom: 20px;
+}
+
+.article-content p {
+    font-size: 14px;
+    line-height: 26px;
+    padding: 8px 0;
+}
+
+
+/* --article content */
+
+
+/* comment */
+.article-comment h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.article-comment .comment {
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
+.comment-form {
+    margin-top: 15px;
+}
+
+.comment-form .items {
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.comment-form .items span,
+.comment-form .items input[type="text"] {
+    height: 22px;
+    line-height: 22px;
+}
+
+.comment-form .items span {
+    float: left;
+    width: 40px;
+}
+
+.comment-form .items input[type="text"] {
+    float: left;
+    width: 300px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+
+.comment-form .items input[type="submit"] {
+    width: 100px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.comment-list {
+    padding: 20px 20px 10px;
+    margin-top: 30px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.comment-content {
+    line-height: 22px;
+    margin-top: 5px;
+}
+
+.comment-author {
+    font-weight: 700;
+}
+
+.comment-date {
+    color: #757575;
+}
+
+/* --comment */

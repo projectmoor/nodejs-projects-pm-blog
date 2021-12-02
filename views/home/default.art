@@ -1,0 +1,170 @@
+{{extend './common/layout.art'}} {{block 'link'}}
+<link rel="stylesheet" href="/home/css/index.css">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bitter&family=Work+Sans&display=swap" rel="stylesheet"> {{/block}} {{block 'main'}}
+<!-- header -->
+{{include './common/header.art'}}
+<!-- /header -->
+<!-- Hero Section -->
+<div class="hero">
+</div>
+<!-- /Hero Section -->
+<!-- Intro Section -->
+<div class="intro">
+    <h3>Project Moor: A Programming Blog</h3>
+    <p>{{category ? category : 'All Articles'}}</p>
+</div>
+<!-- /Intro Section -->
+<!-- Note List Section -->
+<div class="notes">
+    <ul class="notes-hd">
+        <li class="notes-hd-item active">Recent Posts</li>
+        <li class="notes-hd-item">Popular</li>
+    </ul>
+    <div class="notes-bd">
+        <ol class="clearfix">
+            {{each posts.records}}
+            <a href="/home/post?id={{@ $value._id}}">
+                <li class="note-card">
+                    <div class="note-card-coverbox">
+                        <img src="{{$value.cover}}" alt="">
+                    </div>
+                    <div class="note-card-textbox">
+                        <p class="note-card-tag">{{toUpperCase($value.category)}}</p>
+                        <h6 class="note-card-title">{{$value.title}}</h6>
+                        <p class="note-card-info">
+                            <Span class="text-bold">By 
+                            <i class="arthor">{{$value.author.username}}</i>
+                            </Span> on
+                            <i class="date">{{dateFormat($value.publishDate, 'mm-dd-yyyy')}}</i>
+                        </p>
+                        <p>{{@$value.content.replace(/<[^>]+>/g, '').substr(0, 150)+'...'}}</p>
+                    </div>
+                </li>
+            </a>
+            {{/each}}
+        </ol>
+        <!-- Pagination -->
+        <ul class="pagination">
+            <li style="display: {{ posts.page-1 < 1 ? 'none' : 'inline'}}">
+                <a href="/home?page={{posts.page-1}}">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            {{each posts.display}}
+            <li><a href="/home?page={{$value}}" class="{{$value==posts.page ? 'active': ''}}">{{$value}}</a></li>
+            {{/each}}
+
+            <li style="display: {{ posts.page - 0 + 1 > posts.pages ? 'none' : 'inline'}}">
+                <a href="/home?page={{posts.page-0+1}}">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    <!-- /Pagination -->
+    </div>
+    <div class="notes-bd" style="display: none;">
+        <ol>
+            <li class="note-card">
+                <div class="note-card-coverbox">
+                    <img src="" alt="">
+                </div>
+                <div class="note-card-textbox">
+                    <p class="note-card-tag">NONE</p>
+                    <h6 class="note-card-title">Aliquam gravida volutpat tristique</h6>
+                    <p class="note-card-info">
+                        <Span class="text-bold">By 
+                            <i class="arthor">nibh gravida</i>
+                            </Span> on
+                        <i class="date">01-01-2000</i>
+                    </p>
+                </div>
+            </li>
+            <li class="note-card">
+                <div class="note-card-coverbox">
+                    <img src="" alt="">
+                </div>
+                <div class="note-card-textbox">
+                    <p class="note-card-tag">NONE</p>
+                    <h6 class="note-card-title">Aliquam gravida volutpat tristique</h6>
+                    <p class="note-card-info">
+                        <Span class="text-bold">By 
+                            <i class="arthor">nibh gravida</i>
+                            </Span> on
+                        <i class="date">01-01-2000</i>
+                    </p>
+                </div>
+            </li>
+            <li class="note-card">
+                <div class="note-card-coverbox">
+                    <img src="" alt="">
+                </div>
+                <div class="note-card-textbox">
+                    <p class="note-card-tag">NONE</p>
+                    <h6 class="note-card-title">Aliquam gravida volutpat tristique</h6>
+                    <p class="note-card-info">
+                        <Span class="text-bold">By 
+                            <i class="arthor">nibh gravida</i>
+                            </Span> on
+                        <i class="date">01-01-2000</i>
+                    </p>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- /Note List Section -->
+<div class="category" id="category">
+    <div class="w1200">
+        <div class="category-title">Index</div>
+        <ul>
+            <li class="category-item"><a href="/home/category/web-design">Website Design</a></li>
+            <li class="category-item"><a href="/home/category/javascript">Javascript</a></li>
+            <li class="category-item"><a href="/home/category/nodejs">Node.JS</a></li>
+        </ul>
+    </div>
+
+</div>
+<div class="footer"></div>
+{{/block}}
+<!-- javascript -->
+{{block 'script'}}
+<script type="text/javascript">
+    // show categories
+    const logoBtn = document.querySelector('#logo');
+    const category = document.querySelector('#category');
+
+    logoBtn.addEventListener('click', () => {
+        category.classList.toggle('show');
+    })
+
+    // tab switch
+    var tab_list = document.querySelector('.notes-hd');
+    var lis = tab_list.querySelectorAll('li');
+    var items = document.querySelectorAll('.notes-bd');
+    // add click event to each tab
+    for (var i = 0; i < lis.length; i++) {
+        // set up index for each tab
+        lis[i].setAttribute('index', i);
+        lis[i].onclick = function() {
+            // 1. active tab
+            // set all tab's class to normal 
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].className = 'notes-hd-item';
+            }
+            // set clicked tab's class to normal + active
+            this.className = 'notes-hd-item active';
+            // 2. show corresponding list
+            // get the corresponding index
+            var index = this.getAttribute('index');
+            // hid all post lists
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.display = 'none';
+            }
+            // use index to display corresponding post list
+            items[index].style.display = 'block';
+        }
+    }
+</script>
+{{/block}}
+<!-- /javascript -->

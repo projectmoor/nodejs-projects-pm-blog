@@ -1,0 +1,114 @@
+.login-body {
+    background-color: #fafafb;
+    /* make the entire page area color #fafafb start*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* make the entire page area color #fafafb end*/
+}
+
+.login-wrapper {
+    /* make the content positioned at the center start  */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -66%);
+}
+
+.logo-container {
+    margin: 0 auto 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.logo-container .logo {
+    width: 100%;
+    height: 100%;
+}
+
+.login-container {
+    margin: 0 auto;
+    /* make the login content container positioned at the center end */
+    padding: 50px;
+    border: 1px solid #DADCE0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.login-container .title {
+    color: #000;
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.login-container .login {
+    width: 400px;
+}
+
+.form-group {
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    margin-bottom: 30px;
+}
+
+.form-group input {
+    display: block;
+    box-sizing: border-box;
+    height: 45px;
+    width: 100%;
+    padding-left: 20px;
+    border: 1px solid #DADCE0;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border: 1px solid #1c91e7;
+    box-shadow: 0 0 8px rgba(28, 145, 231, 0.3);
+}
+
+.form-group label {
+    position: absolute;
+    top: 3px;
+    left: 30px;
+    padding: 0 3px;
+    background-color: #fff;
+    color: #afafaf;
+}
+
+.form-group div {
+    height: 30px;
+    text-align: right;
+}
+
+.form-group a {
+    color: #1A73E8;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.btn-login {
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    background-color: skyblue;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: rgb(49, 78, 96);
+}
+
+
+/* error message when login failed */
+
+.error-msg {
+    background-color: #f2dede;
+    padding: 10px 15px;
+    color: #333;
+}
