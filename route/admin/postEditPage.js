@@ -10,7 +10,7 @@ module.exports = async(req, res) => {
         // then it is editing event
         let post = await Post.findOne({ _id: id }).populate('author').lean();
         // console.log(dateFormat(post.publishDate, 'mm/dd/yyyy'));
-        res.render('admin/post-edit', { post, msg, button: 'Edit', link: '/admin/modify-post?' + id });
+        res.render('admin/post-edit', { post, msg, button: 'Edit', link: '/admin/modify-post?id=' + id });
     } else {
         // adding post event
         res.render('admin/post-edit', { msg, button: 'Add', link: '/admin/add-post' });
